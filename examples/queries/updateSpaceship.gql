@@ -1,0 +1,10 @@
+mutation updateSpaceship(
+  $id: ID!
+  $spaceshipUpdateInput: SpaceshipUpdateInput!
+) {
+  updateSpaceship(id: $id, spaceshipUpdateInput: $spaceshipUpdateInput) {
+    id
+    speed
+    name
+  }
+}

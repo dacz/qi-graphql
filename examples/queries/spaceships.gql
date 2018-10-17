@@ -1,0 +1,15 @@
+query spaceships(
+  $spaceshipFilter: SpaceshipFilter
+  $__STATE__spaceships_paginationtoken: String # picked from cache if exists
+) {
+  spaceships(
+    spaceshipFilter: $spaceshipFilter
+    paginationToken: $__STATE__spaceships_paginationtoken
+  ) {
+    ship {
+      name
+      speed
+    }
+    paginationtoken @setParameter(name: "spaceships_paginationtoken") # this will the value from the query to the cache with this name and next query it is used as input variable
+  }
+}

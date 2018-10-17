@@ -1,0 +1,6 @@
+{
+  spaceship(id: "spaceshipID") {
+    id
+    name
+  }
+}

@@ -1,0 +1,25 @@
+# package directories
+node_modules
+jspm_packages
+
+# qi data
+.qi
+
+# Serverless directories
+.serverless
+
+# other
+.webpack
+
+# custom
+archive
+DO.txt
+
+# docker
+.data
+
+# this is pregenerated for lambda to pack in
+static
+
+# env
+env.yml
