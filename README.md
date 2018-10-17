@@ -4,7 +4,7 @@ I felt pain with all the graphiql clones. Authorization and re-authorization is 
 
 Currently only barebone cli available and highly opinionated - it serves my needs but I'm willing to make it much better, because I'm working on more projects.
 
-And as you can see... very bare documentation and probably very buggy. Not ready for prime time but if you feel the same pain, I'm happy to cooperate and make it better.
+**And as you can see... very bare documentation and probably very buggy. Not ready for prime time but if you feel the same pain, I'm happy to cooperate and make it better.**
 
 
 ## How to use it
