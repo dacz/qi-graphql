@@ -1,5 +1,7 @@
 # QI - test your GraphQL
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/dacz/qi-graphql.svg)](https://greenkeeper.io/)
+
 I felt pain with all the graphiql clones. Authorization and re-authorization is nightmare and I missed some other features, too (view headers, timings, possibility to save something from the result of one query and use it in subsequent or another query - like pagination token, etc.).
 
 Currently only barebone cli available and highly opinionated - it serves my needs but I'm willing to make it much better, because I'm working on more projects.
