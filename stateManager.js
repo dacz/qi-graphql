@@ -117,6 +117,7 @@ const init = async () => {
       (Object.keys(settingsClients).length === 1 &&
         Object.keys(settingsClients)[0]) ||
       getDefault(settingsClients);
+    // console.log('CLIENT: ', c);
     let out = {};
     if (!c) {
       return assocPathS('select.client', Object.keys(clients), out);
@@ -226,6 +227,7 @@ const init = async () => {
 
   // qp => queryParams.params
   const query = async qp => {
+    // console.log('CLIENT.CLIENT', qp.client);
     if (!qp.client.client || !qp.query.content) {
       return null;
     }

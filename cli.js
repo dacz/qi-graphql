@@ -9,7 +9,7 @@ inquirer.registerPrompt(
   require('inquirer-autocomplete-prompt')
 );
 
-// initiates mi managetInitiated
+// initiates mi managedInitiated
 let mi;
 const getMi = async () => {
   if (!mi) {
@@ -63,6 +63,9 @@ const query = async params => {
   const rv = await mi.query(qp.params);
   if (rv instanceof Error) {
     console.log('ERROR:', rv.message);
+    if (params.printClient) {
+      console.log(`>>>>>> USING CLIENT: ${qp.params.client.name}`);
+    }
     if (params.printRequest) {
       console.log(
         `------------ REQUEST CONTENT -----------\n${JSON.stringify(
@@ -80,6 +83,10 @@ const query = async params => {
     if (rvw instanceof Error) {
       console.error('Write result failed:', rvw.message);
     }
+  }
+
+  if (params.printClient) {
+    console.log(`>>>>>> USING CLIENT: ${qp.params.client.name}`);
   }
 
   console.log(
@@ -108,6 +115,11 @@ const query = async params => {
       )}`
     );
   }
+  // if (params.printClient) {
+  //   console.log(
+  //     `>>>>>> USING CLIENT: ${qp.params.client.name}`
+  //   );
+  // }
   if (params.printHeaders) {
     console.log(
       `------------ RESPONSE HEADERS -----------\n${JSON.stringify(
@@ -188,6 +200,11 @@ command // eslint-disable-line
       r: {
         alias: 'printRequest',
         describe: 'print request content',
+        type: 'boolean',
+      },
+      k: {
+        alias: 'printClient',
+        describe: 'print client name',
         type: 'boolean',
       },
       t: {
