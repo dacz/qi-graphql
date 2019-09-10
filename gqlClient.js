@@ -67,6 +67,7 @@ const newClient = params => {
     if (authorizer) {
       req = authorizer.requestEnhance(req, authorizer.authRes);
     }
+    console.log('REQ.headers', req.headers);
 
     const rv = await safeAsync(() => got.extend(server.defaultParams)('', req));
     if (rv instanceof Error) {
@@ -84,6 +85,7 @@ const newClient = params => {
           rv.AUTHORIZATION_MAX_TRIES_EXHAUSTED = true;
         }
       }
+      // console.log('ERROR: RESPONSE:', rv);
       rv.req = req;
       return rv;
     }

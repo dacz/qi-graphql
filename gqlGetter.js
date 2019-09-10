@@ -51,8 +51,8 @@ const newClient = async (params, name, cache = dummyCache) => {
       authFn = authorizer.source.match(/^\./)
         ? require(path.join(process.cwd(), authorizer.source)) // eslint-disable-line
         : authorizer.source.match(/^qi-/)
-          ? require(`./authorizers/${authorizer.source.replace(/^\qi-/, '')}`) // eslint-disable-line
-          : require(authorizer.source); // eslint-disable-line
+        ? require(`./authorizers/${authorizer.source.replace(/^\qi-/, '')}`) // eslint-disable-line
+        : require(authorizer.source); // eslint-disable-line
     } catch (e) {
       console.log('CWD', process.cwd());
       console.log('SOURCE:', authorizer.source);
@@ -130,6 +130,9 @@ const newClient = async (params, name, cache = dummyCache) => {
       req = authorizer.fn.requestEnhance(req, authorizer.parameters);
     }
 
+    // req.headers['X-Photon-loglevel'] = 'debug';
+    // console.log('REQ.headers', req.headers);
+
     const rv = await safeAsync(() => got.extend(server.defaultParams)('', req));
     if (rv instanceof Error) {
       console.log('query response error', rv.message);
@@ -145,6 +148,7 @@ const newClient = async (params, name, cache = dummyCache) => {
           rv.AUTHORIZATION_ALREADY_TRIED = true;
         }
       }
+      // console.log('ERROR: RESPONSE:', rv.body);
       rv.req = req;
       return rv;
     }
